@@ -94,7 +94,7 @@ async function create(req, res, next) {
       await sendEmailRegistration(email, verificationCode);
 
     } catch (e) {
-      console.error('Error de Sengrid', e);
+      console.error('Erro de Sengrid', e);
     }
   } catch (e) {
     next(e);

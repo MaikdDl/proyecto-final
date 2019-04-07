@@ -2,7 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('../routes');
+const routes = require('../webserver/routes');
 
 const app = express();
 let server = null;
@@ -46,7 +46,7 @@ async function listen(port) {
   if (server === null) {
     server = await app.listen(port);
   } else {
-    console.error('El servidor ya está inicializado');
+    console.error('O servidor xa está inicializado');
   }
 }
 
@@ -55,7 +55,7 @@ async function close() {
     await server.close();
     server = null;
   } else {
-    console.error('No se puede cerrar un servidor que nos está iniciado')
+    console.error('Non se pode pechar un servidor que non está iniciado')
   }
 }
 module.exports = {
