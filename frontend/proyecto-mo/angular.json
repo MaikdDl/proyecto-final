@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "sn",
+      "prefix": "mo",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/theme.less",
               "src/scss/styles.scss",
               "./node_modules/simple-css-reset/reset.css"
             ],
