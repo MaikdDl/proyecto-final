@@ -7,13 +7,17 @@
         background: #7dbcea;
         color: #fff;
       }
+
+      nz-header {
+        height: 12%;
+      }
       nz-footer {
         background: #7dbcea;
         color: #fff;
       }
 
       nz-footer {
-        line-height: 1.5;
+        line-height: 2.5;
       }
 
       nz-sider {
@@ -31,6 +35,7 @@
 
       nz-layout {
         margin-bottom: 48px;
+        height: 100%;
       }
 
       nz-layout:last-child {
