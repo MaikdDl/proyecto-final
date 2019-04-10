@@ -1,6 +1,6 @@
 'use strict';
 
-const mysql = require('../../../databases/mysql-pool');
+const mysqlPool = require('../../../databases/mysql-pool');
 
 async function getUserProfile(req, res, next) {
   const { uuid } = req.claims;

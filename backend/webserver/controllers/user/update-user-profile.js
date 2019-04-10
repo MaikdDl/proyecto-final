@@ -1,5 +1,6 @@
 'use strict';
 
+const mysqlPool = require('../../../databases/mysql-pool');
 const dot = require('dot-object');
 const Joi = require('joi');
 

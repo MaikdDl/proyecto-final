@@ -27,6 +27,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => res.send('main entry point'));
+app.use('/api', routes.orderRouter);
 app.use('/api', routes.accountRouter);
 app.use('/api', routes.userRouter);
 app.use('/api', routes.productRouter);

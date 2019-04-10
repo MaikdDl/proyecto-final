@@ -1,4 +1,5 @@
 'use strict';
+
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const sendgridMail = require('@sendgrid/mail');
@@ -26,19 +27,19 @@ async function insertUserIntoDatabase(email, password) {
     created_at: createdAt,
   });
 
-  await connection.query('INSERT INTO cliente SET ?', {
-    cliente_uuid: uuid,
-    nombre,
-    apellido1,
-    apellido2,
-    nif,
-    direccion,
-    cp,
-    pais,
-    telefono,
-    fecha_nacimiento: fechaNacimiento,
-    ultimo_cambio: createdAt
-  })
+  // await connection.query('INSERT INTO cliente SET ?', {
+  //   cliente_uuid: uuid,
+  //   nombre,
+  //   apellido1,
+  //   apellido2,
+  //   nif,
+  //   direccion,
+  //   cp,
+  //   pais,
+  //   telefono,
+  //   fecha_nacimiento: fechaNacimiento,
+  //   ultimo_cambio: createdAt
+  // })
 
   return uuid;
 }
@@ -126,6 +127,7 @@ async function create(req, res, next) {
 
     try {
       const verificationCode = await addVerificationCode(uuid);
+      console.log(uuid);
       await sendEmailRegistration(email, verificationCode);
 
     } catch (e) {
