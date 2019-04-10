@@ -49,10 +49,15 @@ async function login(req, res, next) {
         role: 'user',
       };
 
-      const token = jwt.sign(payloadJwt, process.env.AUTH_JWT_SECRET, { expiresIn: 60 });
+      const jwtTokenExpiration = parseInt(process.env.AUTH_ACCESS_TOKEN_TTL, 10);
+      const token = jwt.sign(payloadJwt, process.env.AUTH_JWT_SECRET, {
+        expiresIn:
+          jwtTokenExpiration
+      });
+
       const response = {
         accessToken: token,
-        expiresIn: 60,
+        expiresIn: jwtTokenExpiration,
       };
 
       return res.status(200).json(response);

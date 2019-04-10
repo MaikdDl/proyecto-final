@@ -26,6 +26,20 @@ async function insertUserIntoDatabase(email, password) {
     created_at: createdAt,
   });
 
+  await connection.query('INSERT INTO cliente SET ?', {
+    cliente_uuid: uuid,
+    nombre,
+    apellido1,
+    apellido2,
+    nif,
+    direccion,
+    cp,
+    pais,
+    telefono,
+    fecha_nacimiento: fechaNacimiento,
+    ultimo_cambio: createdAt
+  })
+
   return uuid;
 }
 
@@ -69,6 +83,27 @@ async function validateSchema(payload) {
 
   return Joi.validate(payload, schema);
 }
+
+// async function validateSchema(payload) {
+//   const schema = Joi.object().keys({
+//     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
+//     password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
+//     nombre: Joi.string().min(3).max(64).required(),
+//     apellido1: Joi.string().min(3).max(64).required(),
+//     apellido2: Joi.string().min(3).max(64).required(),
+//     nif: Joi.string().min(5).max(15).required,
+//     direccion: Joi.string().min(15).max(255).required(),
+//     cp: Joi.string().min(3).max(15).required(),
+//     pais: Joi.string().min(3).max(45).required(),
+//     telefono: Joi.number().integer().min(100000).max(99999999999).required(),
+//     fecha_nacimiento: Joi.date().required(),
+//     ultimo_cambio: Joi.date().min('1-1-1900').max('1-1-2001').required(),
+//   }).with('nombre', 'apellido1', 'apellido2', 'nif','direccion', 'cp', 'pais', 'telefono',
+//   'fecha_nacimiento');
+
+//   return Joi.validate(payload, schema);
+// }
+
 
 async function create(req, res, next) {
   const accountData = { ...req.body };
