@@ -7,8 +7,6 @@ async function getProducts(req, res, next) {
 
   const [productData] = await connection.query('SELECT id_producto, imagen, nombre, descripcion, precio FROM Proyecto_MO.producto;')
 
-  console.log('Productos:', productData);
-
   return res.status(200).send(productData);
 }
 
