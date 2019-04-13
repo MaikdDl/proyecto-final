@@ -33,7 +33,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/scss"
+                "src/theme.less"
               ]
             },
             "scripts": [],
