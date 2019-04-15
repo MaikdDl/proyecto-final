@@ -7,7 +7,8 @@ async function getUserProfile(req, res, next) {
 
   const connection = await mysqlPool.getConnection();
 
-  const userData = await connection.query(`SELECT * FROM Proyecto_MO.usuario INNER JOIN Proyecto_MO.cliente ON uuid= cliente_uuid WHERE uuid= '${uuid}'`);
+  const [userData] = await connection.query(`SELECT email, password, nombre, apellido1, apellido2, nif, direccion, cp,
+  pais, telefono, fecha_nacimiento FROM Proyecto_MO.usuario INNER JOIN Proyecto_MO.cliente ON uuid= cliente_uuid WHERE uuid= '${uuid}'`);
 
   console.log('Datos de usuario:', userData);
 

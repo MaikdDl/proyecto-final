@@ -6,12 +6,13 @@ const mysqlPool = require('../../../databases/mysql-pool');
 
 async function makeOrder(req, res, next) {
   const orderData = { ...req.body };
+  const { uuid } = req.claims;
 
   const now = new Date();
   const orderDate = now.toISOString().substring(0, 19).replace('T', ' ');
 
   const {
-    uuid,
+    // uuid,
     id_producto: idProducto,
     unidades_producto: unidades,
     descripcion_producto: descripcion
@@ -34,7 +35,7 @@ async function makeOrder(req, res, next) {
     ultimo_cambio: orderDate
   });
 
-  await connection.query(`UPDATE producto SET unidades = unidades - '${unidades}'
+  await connection.query(`UPDATE producto SET unidades = unidades - '${unidades}', ultimo_cambio = '${orderDate}'
   WHERE id_producto = '${idProducto}'`);
 
   return res.status(204).json();

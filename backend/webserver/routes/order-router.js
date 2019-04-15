@@ -8,6 +8,6 @@ const showUserOrders = require('../controllers/order/show-user-orders');
 const orderRouter = express.Router();
 
 orderRouter.post('/order', checkJwtToken, makeOrder);
-orderRouter.get('/order/showOrders', showUserOrders);
+orderRouter.get('/order/showOrders', checkJwtToken, showUserOrders);
 
 module.exports = orderRouter;

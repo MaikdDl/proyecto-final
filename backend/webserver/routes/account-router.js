@@ -8,7 +8,7 @@ const logout = require('../controllers/account/logout');
 
 const accountRouter = express.Router();
 
-accountRouter.put('/account', createAccount);
+accountRouter.post('/account', createAccount);
 accountRouter.get('/account/activate', activateAccount);
 accountRouter.post('/account/login', login);
 accountRouter.get('/account/logout', logout);

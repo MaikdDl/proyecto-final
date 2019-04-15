@@ -3,7 +3,7 @@
 const mysqlPool = require('../../../databases/mysql-pool');
 
 async function activate(req, res, next) {
-  const { verification_code: verificationCode } = req.query;
+  const { verification_code: verificationCode, email } = req.query;
 
   if (!verificationCode) {
     return res.status(400).json({
@@ -14,7 +14,7 @@ async function activate(req, res, next) {
 
   const now = new Date();
   const sqlActivateQuery = `UPDATE usuario
-  SET activated_at = '${now.toISOString().substring(0, 19).replace('T', ' ')}'
+  SET activated_at = '${now.toISOString().substring(0, 19).replace('T', ' ')}', ultimo_cambio = '${now.toISOString().substring(0, 19).replace('T', ' ')}'
   WHERE verification_code='${verificationCode}'
   AND activated_at IS NULL`;
 
@@ -31,7 +31,6 @@ async function activate(req, res, next) {
   } catch (e) {
     return res.status(500).send(e.message);
   }
-
 }
 
 module.exports = activate;

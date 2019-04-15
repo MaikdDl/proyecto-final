@@ -6,9 +6,10 @@ const sendgridMail = require('@sendgrid/mail');
 const uuidV4 = require('uuid/v4');
 const mysqlPool = require('../../../databases/mysql-pool');
 
+
 sendgridMail.setApiKey(process.env.SENGRID_API_KEY);
 
-async function insertUserIntoDatabase(email, password) {
+async function insertUserIntoDatabase(email, password, nombre, apellido1, apellido2) {
   const securePassword = await bcrypt.hash(password, 10);
   const uuid = uuidV4();
   const now = new Date();
@@ -25,21 +26,16 @@ async function insertUserIntoDatabase(email, password) {
     email,
     password: securePassword,
     created_at: createdAt,
+    ultimo_cambio: createdAt
   });
 
-  // await connection.query('INSERT INTO cliente SET ?', {
-  //   cliente_uuid: uuid,
-  //   nombre,
-  //   apellido1,
-  //   apellido2,
-  //   nif,
-  //   direccion,
-  //   cp,
-  //   pais,
-  //   telefono,
-  //   fecha_nacimiento: fechaNacimiento,
-  //   ultimo_cambio: createdAt
-  // })
+  await connection.query('INSERT INTO cliente SET ?', {
+    cliente_uuid: uuid,
+    nombre,
+    apellido1,
+    apellido2,
+    ultimo_cambio: createdAt
+  });
 
   return uuid;
 }
@@ -69,24 +65,28 @@ async function sendEmailRegistration(userEmail, verificationCode) {
     },
     subject: "Benvido a Morriña Online",
     text: 'Graciñas por rexistrarte en Morriña Online. Xa podes acceder a nosa web e mercar os mellores productos da túa terra',
-    html: `Para confirmar a túa conta <a href="${process.env.HTTP_SERVER_DOMAIN}/api/account/activate?verification_code=${verificationCode}">actívala aquí</a>`
+    html: `Para confirmar a túa conta <a href="${process.env.HTTP_SERVER_DOMAIN}/api/account/activate?verification_code=${verificationCode}&email=${userEmail}">actívala aquí</a>`
   };
 
   const data = await sendgridMail.send(msg);
 
   return data;
 }
+
 async function validateSchema(payload) {
   const schema = {
     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
     password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
+    nombre: Joi.string().min(3).max(64).required(),
+    apellido1: Joi.string().min(3).max(64).required(),
+    apellido2: Joi.string().min(3).max(64),
   };
 
   return Joi.validate(payload, schema);
 }
 
 // async function validateSchema(payload) {
-//   const schema = Joi.object().keys({
+//   const schema = {
 //     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
 //     password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
 //     nombre: Joi.string().min(3).max(64).required(),
@@ -97,10 +97,9 @@ async function validateSchema(payload) {
 //     cp: Joi.string().min(3).max(15).required(),
 //     pais: Joi.string().min(3).max(45).required(),
 //     telefono: Joi.number().integer().min(100000).max(99999999999).required(),
-//     fecha_nacimiento: Joi.date().required(),
-//     ultimo_cambio: Joi.date().min('1-1-1900').max('1-1-2001').required(),
-//   }).with('nombre', 'apellido1', 'apellido2', 'nif','direccion', 'cp', 'pais', 'telefono',
-//   'fecha_nacimiento');
+//     fecha_nacimiento: Joi.date().min('1-1-1900').max('1-1-2001').required(),
+//     ultimo_cambio: Joi.date().required(),
+//   };
 
 //   return Joi.validate(payload, schema);
 // }
@@ -117,17 +116,19 @@ async function create(req, res, next) {
 
   const {
     email,
-    password
+    password,
+    nombre,
+    apellido1,
+    apellido2
   } = accountData
 
   try {
-    const uuid = await insertUserIntoDatabase(email, password);
+    const uuid = await insertUserIntoDatabase(email, password, nombre, apellido1, apellido2);
     res.status(204).json();
 
 
     try {
       const verificationCode = await addVerificationCode(uuid);
-      console.log(uuid);
       await sendEmailRegistration(email, verificationCode);
 
     } catch (e) {
