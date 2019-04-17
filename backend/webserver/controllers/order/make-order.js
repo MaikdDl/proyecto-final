@@ -20,12 +20,6 @@ async function makeOrder(req, res, next) {
 
   const connection = await mysqlPool.getConnection();
 
-  console.log('uuid', uuid);
-  console.log('idProducto', idProducto);
-  console.log('unidades', unidades);
-  console.log('descripcion', descripcion);
-  console.log('fecha pedido', orderDate);
-
   await connection.query(`INSERT INTO pedido SET ?`, {
     cliente_uuid: uuid,
     id_producto: idProducto,

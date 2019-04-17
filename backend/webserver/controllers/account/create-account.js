@@ -15,10 +15,6 @@ async function insertUserIntoDatabase(email, password, nombre, apellido1, apelli
   const now = new Date();
   const createdAt = now.toISOString().substring(0, 19).replace('T', ' ');
 
-  console.log('securePassword', securePassword);
-  console.log('createdAt', createdAt);
-  console.log('uuid', uuid);
-
   const connection = await mysqlPool.getConnection();
 
   await connection.query('INSERT INTO usuario SET ?', {
@@ -42,8 +38,8 @@ async function insertUserIntoDatabase(email, password, nombre, apellido1, apelli
 
 async function addVerificationCode(uuid) {
   const verificationCode = uuidV4();
-  const now = new Date();
-  const activatedAt = now.toISOString().substring(0, 19).replace('T', ' ');
+  // const now = new Date();
+  // const activatedAt = now.toISOString().substring(0, 19).replace('T', ' ');
   const sqlQuery = `UPDATE usuario
   SET verification_code = '${verificationCode}'
   WHERE uuid= '${uuid}'`;
@@ -84,26 +80,6 @@ async function validateSchema(payload) {
 
   return Joi.validate(payload, schema);
 }
-
-// async function validateSchema(payload) {
-//   const schema = {
-//     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-//     password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
-//     nombre: Joi.string().min(3).max(64).required(),
-//     apellido1: Joi.string().min(3).max(64).required(),
-//     apellido2: Joi.string().min(3).max(64).required(),
-//     nif: Joi.string().min(5).max(15).required,
-//     direccion: Joi.string().min(15).max(255).required(),
-//     cp: Joi.string().min(3).max(15).required(),
-//     pais: Joi.string().min(3).max(45).required(),
-//     telefono: Joi.number().integer().min(100000).max(99999999999).required(),
-//     fecha_nacimiento: Joi.date().min('1-1-1900').max('1-1-2001').required(),
-//     ultimo_cambio: Joi.date().required(),
-//   };
-
-//   return Joi.validate(payload, schema);
-// }
-
 
 async function create(req, res, next) {
   const accountData = { ...req.body };
