@@ -7,22 +7,28 @@ import { SiteLayoutComponent } from './components/site-layout/site-layout.compon
 import { SiteLayoutHeaderComponent } from './components/site-layout-header/site-layout-header.component';
 import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-layout-footer.component';
 import { RouterModule } from '@angular/router';
+import { SiteLayoutHeaderFormsComponent } from './components/site-layout-header/site-layout-header-forms/site-layout-header-forms.component';
+import { Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     SiteLayoutComponent,
     SiteLayoutHeaderComponent,
-    SiteLayoutFooterComponent
+    SiteLayoutFooterComponent,
+    SiteLayoutHeaderFormsComponent,
   ],
   imports: [CommonModule,
     RouterModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedRoutingModule,
     NgZorroAntdModule,],
   exports: [
     SiteLayoutComponent,
     SiteLayoutFooterComponent,
-    SiteLayoutHeaderComponent
+    SiteLayoutHeaderComponent,
+    SiteLayoutHeaderFormsComponent
   ],
 })
 export class SharedModule { }

@@ -13,23 +13,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { SharedModule } from "./shared/shared.module";
-import { SiteLayoutHeaderFormsComponent } from './shared/components/site-layout-header/site-layout-header-forms/site-layout-header-forms.component';
 
 registerLocaleData(es);
 
 @NgModule({
-  declarations: [AppComponent, SiteLayoutHeaderFormsComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     InicioModule,
     SobreNosModule,
     ProductosModule,
+    SharedModule,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent]
