@@ -1,9 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InicioComponent } from "./component/inicio/inicio.component";
-import { LayoutComponent } from '../shared/layout/component/layout/layout.component';
+import { SiteLayoutComponent } from '../shared/components/site-layout/site-layout.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: SiteLayoutComponent,
+    children: [
+      {
+        path: 'inicio',
+        component: InicioComponent
+      }
+    ]
+  }
 
 ];
 

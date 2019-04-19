@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
-import { LayoutComponent } from './layout/component/layout/layout.component';
 import { InicioComponent } from '../inicio/component/inicio/inicio.component';
 import { SobreNosComponent } from '../sobre-nos/component/sobre-nos/sobre-nos.component';
+import { SiteLayoutComponent } from './components/site-layout/site-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: SiteLayoutComponent,
     children: [
       {
         path: 'inicio',

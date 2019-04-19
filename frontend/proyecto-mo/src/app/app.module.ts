@@ -12,13 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
-import { LayoutComponent } from './shared/layout/component/layout/layout.component';
 import { SharedModule } from "./shared/shared.module";
+import { SiteLayoutHeaderFormsComponent } from './shared/components/site-layout-header/site-layout-header-forms/site-layout-header-forms.component';
 
 registerLocaleData(es);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SiteLayoutHeaderFormsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
