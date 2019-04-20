@@ -9,6 +9,7 @@ import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-
 import { RouterModule } from '@angular/router';
 import { SiteLayoutHeaderFormsComponent } from './components/site-layout-header/site-layout-header-forms/site-layout-header-forms.component';
 import { Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     SharedRoutingModule,
+    AuthModule,
     NgZorroAntdModule,],
   exports: [
     SiteLayoutComponent,

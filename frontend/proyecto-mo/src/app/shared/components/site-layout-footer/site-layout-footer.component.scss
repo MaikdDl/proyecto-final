@@ -1,5 +1,9 @@
 @import '../../../../scss/colors.scss';
 
+:host {
+  background-color: red;
+}
+
 div {
   display: flex;
   height: 100%;

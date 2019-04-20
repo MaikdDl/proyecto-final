@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioModule } from './inicio/inicio.module';
 import { SobreNosModule } from './sobre-nos/sobre-nos.module';
-import { ProductosModule } from './productos/productos.module';
+import { PacksModule } from './packs/packs.module';
 import { NgZorroAntdModule, NZ_I18N, es_ES } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,7 +23,7 @@ registerLocaleData(es);
     AppRoutingModule,
     InicioModule,
     SobreNosModule,
-    ProductosModule,
+    PacksModule,
     SharedModule,
     NgZorroAntdModule,
     FormsModule,

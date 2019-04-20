@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductosComponent } from './component/productos/productos.component';
+import { PacksComponent } from './component/packs/packs.component';
 import { SiteLayoutComponent } from '../shared/components/site-layout/site-layout.component';
 
 const routes: Routes = [
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: SiteLayoutComponent,
     children: [
       {
-        path: 'productos',
-        component: ProductosComponent
+        path: 'packs',
+        component: PacksComponent
       }
     ]
   }
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class ProductosRoutingModule { }
+export class PacksRoutingModule { }
