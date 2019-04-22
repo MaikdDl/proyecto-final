@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioModule } from './inicio/inicio.module';
 import { SobreNosModule } from './sobre-nos/sobre-nos.module';
+import { ProdutosModule } from './produtos/produtos.module';
 import { PacksModule } from './packs/packs.module';
 import { NgZorroAntdModule, NZ_I18N, es_ES } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
+import { NgxsModule } from "@ngxs/store";
+import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
+import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
+import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { SharedModule } from "./shared/shared.module";
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(es);
 
@@ -20,9 +26,17 @@ registerLocaleData(es);
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsRouterPluginModule.forRoot(),
+    NgxsModule.forRoot([], {
+      // developmentMode: !environment.production
+      developmentMode: false
+    }),
     AppRoutingModule,
     InicioModule,
     SobreNosModule,
+    ProdutosModule,
     PacksModule,
     SharedModule,
     NgZorroAntdModule,
