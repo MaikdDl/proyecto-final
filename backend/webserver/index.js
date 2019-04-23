@@ -10,21 +10,21 @@ app.use(bodyParser.json());
 
 
 app.use((req, res, next) => {
-  const accesControlAllowMethods = [
-
-  ];
-
-  const accessControlAllowHeaders = [
-
-  ];
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Methods', accesControlAllowMethods.join(','));
-  res.header('Access-Control-Allow-Headers', accessControlAllowHeaders.join(','));
+  res.header(
+    'Access-Control-Allow-Methods',
+    'PUT, POST, PATCH, GET, DELETE,OPTIONS'
+  );
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
   next();
 
 });
+
 
 app.get('/', (req, res) => res.send('main entry point'));
 app.use('/api', routes.orderRouter);
