@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from "@angular/forms";
+import { Validators, FormGroup, FormBuilder, ControlContainer } from "@angular/forms";
+import { AuthService } from '../../services/auth.service';
+import { Store } from "@ngxs/store";
+import { Login } from '../../store/auth.actions';
 
 @Component({
   selector: 'mo-acceso',
@@ -17,13 +20,18 @@ export class AccesoComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      remember: [true]
     });
+  }
+
+  login() {
+    if (this.validateForm.valid) {
+      this.store.dispatch(new Login(this.validateForm.value));
+    }
   }
 }

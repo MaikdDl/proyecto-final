@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Actions, Store, ofAction } from '@ngxs/store';
+import { RegisterSuccess, Register } from '../../store/auth.actions';
 
 
 @Component({
@@ -31,22 +34,39 @@ export class RexistroComponent implements OnInit {
     return {};
   };
 
-  getCaptcha(e: MouseEvent): void {
-    e.preventDefault();
-  }
-
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+    private actions$: Actions
+  ) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
-      nome: [null, [Validators.required]],
-      apelido1: [null, [Validators.required]],
-      apelido2: [null, [Validators]],
+      nombre: [null, [Validators.required]],
+      apellido1: [null, [Validators.required]],
+      apellido2: [null, [Validators]],
       agree: [false]
-    });
+    }),
+      this.actions$
+        .pipe(ofAction(RegisterSuccess))
+        .subscribe(() => this.validateForm.reset());
+  }
+
+  register() {
+    if (!this.validateForm.valid) {
+      this.markFormGroupAsTouched(this.validateForm);
+      return;
+    }
+
+    this.store.dispatch(new Register(this.validateForm.value));
+  }
+
+  markFormGroupAsTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control =>
+      control.markAsTouched());
   }
 
 }

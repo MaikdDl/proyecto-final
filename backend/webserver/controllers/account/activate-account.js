@@ -24,7 +24,7 @@ async function activate(req, res, next) {
 
     if (resultActivateUser[0].affectedRows === 1) {
       connection.release();
-      return res.send('A súa conta foi activada correctamente')
+      return res.send('A túa conta foi activada correctamente')
     }
     connection.release();
     return res.send('O código de verificación non é válido')

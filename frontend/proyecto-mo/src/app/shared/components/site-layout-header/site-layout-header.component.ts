@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'mo-site-layout-header',
@@ -8,5 +7,4 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class SiteLayoutHeaderComponent {
   title = 'Morriña Online';
-
 }

@@ -4,15 +4,13 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 html {
-  // height: 100%;
   overflow-y: auto !important;
 
   body {
-    background-color: rebeccapurple;
+    background-color: $light;
     font-family: 'Raleway', sans-serif;
     height: 100%;
-    // color: $main;
-    color: green;
+    color: $dark;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

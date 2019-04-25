@@ -1,65 +1,74 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input formControlName="email" id="email" placeholder="Correo electrónico" />
-      <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
-        O correo electrónico que introduciches non é válido!
-      </nz-form-explain>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input type="password" id="password" formControlName="password" placeholder="Contrasinal"
-        (ngModelChange)="updateConfirmValidator()" />
-      <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">Por
-        favor, introduce un contrasinal!</nz-form-explain>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input type="password" formControlName="checkPassword" id="checkPassword"
-        placeholder="Confirma o contrasinal" />
-      <nz-form-explain *ngIf="validateForm.get('checkPassword')?.dirty && validateForm.get('checkPassword')?.errors">
-        <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('required')">
-          Por favor, confirma o teu contrasinal!
-        </ng-container>
-        <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('confirm')">
-          Os contrasinais que introduciches non son iguais!
-        </ng-container>
-      </nz-form-explain>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="nome" formControlName="nome" placeholder="Nome" />
-      <nz-form-explain *ngIf="validateForm.get('nome')?.dirty && validateForm.get('nome')?.errors">Por favor, introduce
-        o teu nome!</nz-form-explain>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="apelido1" formControlName="apelido1" placeholder="Primeiro apelido" />
-      <nz-form-explain *ngIf="validateForm.get('apelido1')?.dirty && validateForm.get('apelido1')?.errors">Por favor,
-        introduce o teu apelido!</nz-form-explain>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <input nz-input id="apelido2" formControlName="apelido2" placeholder="Segundo apelido" />
-      <!-- <nz-form-explain *ngIf="validateForm.get('apelido2')?.dirty && validateForm.get('apelido2')?.errors">Please input
-        website!</nz-form-explain> -->
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item nz-row style="margin-bottom:8px;">
-    <nz-form-control [nzSpan]="14" [nzOffset]="6">
-      <label nz-checkbox formControlName="agree">
-        <span>Leín as <a>condicións do servicio</a></span>
-      </label>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item nz-row style="margin-bottom:8px;">
-    <nz-form-control [nzSpan]="14" [nzOffset]="6">
-      <button nz-button nzType="primary">Rexistrame</button>
-    </nz-form-control>
-  </nz-form-item>
-</form>
+<div class="modal-wrapper" id="popup">
+  <div class="popup-contenedor">
+    <h2>Introduce os teus datos para rexistrarte</h2>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input id="nombre" formControlName="nombre" placeholder="Nome" />
+          <nz-form-explain *ngIf="validateForm.get('nombre')?.dirty && validateForm.get('nombre')?.errors">Por favor,
+            introduce o teu nome!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input id="apellido1" formControlName="apellido1" placeholder="Primeiro apellido" />
+          <nz-form-explain *ngIf="validateForm.get('apellido1')?.dirty && validateForm.get('apellido1')?.errors">Por
+            favor,
+            introduce o teu apelido!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input id="apellido2" formControlName="apellido2" placeholder="Segundo apellido" />
+          <!-- <nz-form-explain *ngIf="validateForm.get('apellido2')?.dirty && validateForm.get('apellido2')?.errors">Please input
+                         website!</nz-form-explain> -->
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="email" id="email" placeholder="Correo electrónico" />
+          <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
+            O correo electrónico que introduciches non é válido!
+            Por favor. introduce o teu correo electrónico!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input type="password" id="password" formControlName="password" placeholder="Contrasinal"
+            (ngModelChange)="updateConfirmValidator()" />
+          <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">Por
+            favor, introduce un contrasinal!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input type="password" formControlName="checkPassword" id="checkPassword"
+            placeholder="Confirma o contrasinal" />
+          <nz-form-explain
+            *ngIf="validateForm.get('checkPassword')?.dirty && validateForm.get('checkPassword')?.errors">
+            <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('required')">
+              Por favor, confirma o teu contrasinal!
+            </ng-container>
+            <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('confirm')">
+              Os contrasinais que introduciches non son iguais!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- <nz-form-item nz-row style="margin-bottom:8px;">
+                     <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                       <label nz-checkbox formControlName="agree">
+                         <span>Leín as <a>condicións do servicio</a></span>
+                       </label>
+                     </nz-form-control>
+                   </nz-form-item> -->
+      <nz-form-item nz-row style="margin-bottom:8px;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button nz-button (click)="register()" nzType="primary">Rexistrarme</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <a class="popup-cerrar" href="#">X</a>
+  </div>
+</div>

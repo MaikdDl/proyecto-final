@@ -19,11 +19,27 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      <button nz-button nzType="primary" [disabled]="!validateForm.valid">Acceder</button>
-      ou podes
-      <a href="">rexistrarte agora</a>
+      <button nz-button (click)="login()" nzType="primary" [disabled]="!validateForm.valid">Acceder</button>
     </nz-form-control>
   </nz-form-item>
+  <nz-form-item>
+    <nav>
+      <ul>
+        <li>
+          <a href="">A miña conta</a>
+        </li>
+        <li>
+          <a href="">Pechar sesión</a>
+        </li>
+      </ul>
+    </nav>
+
+  </nz-form-item>
+  <div>
+    ou podes
+    <a href="#popup" class="popup-link">rexistrarte agora</a>
+    <!-- <a routerLink="/">rexistrarte agora</a> -->
+  </div>
 </form>
 <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
 <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>

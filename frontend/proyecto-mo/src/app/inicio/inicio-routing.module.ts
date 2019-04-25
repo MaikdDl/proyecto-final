@@ -6,6 +6,11 @@ import { SiteLayoutComponent } from '../shared/components/site-layout/site-layou
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     component: SiteLayoutComponent,
     children: [
       {

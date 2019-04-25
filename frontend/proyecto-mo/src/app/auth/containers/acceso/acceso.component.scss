@@ -1,0 +1,12 @@
+@import '../../../../scss/colors.scss';
+ a {
+  color: $main;
+  // display: inline;
+  margin-top: 10px;
+}
+
+li {
+  display: inline;
+  padding: 5px;
+}
+
