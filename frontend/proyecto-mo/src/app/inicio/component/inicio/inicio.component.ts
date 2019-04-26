@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./inicio.component.scss']
 })
 export class InicioComponent {
-
+  array = [1, 2, 3, 4];
 
 }

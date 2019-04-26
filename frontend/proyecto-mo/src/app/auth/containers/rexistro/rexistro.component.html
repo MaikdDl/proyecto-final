@@ -1,6 +1,6 @@
 <div class="modal-wrapper" id="popup">
   <div class="popup-contenedor">
-    <h2>Introduce os teus datos para rexistrarte</h2>
+    <h3>Introduce os teus datos para rexistrarte</h3>
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-control [nzSm]="14" [nzXs]="24">
@@ -65,10 +65,10 @@
                    </nz-form-item> -->
       <nz-form-item nz-row style="margin-bottom:8px;">
         <nz-form-control [nzSpan]="14" [nzOffset]="6">
-          <button nz-button (click)="register()" nzType="primary">Rexistrarme</button>
+          <button moPreventDefault nz-button (click)="register()" nzType="primary">Rexistrarme</button>
         </nz-form-control>
       </nz-form-item>
     </form>
-    <a class="popup-cerrar" href="#">X</a>
+    <a moPreventDefault (click)="cerrarPopup()" class="popup-cerrar">X</a>
   </div>
 </div>

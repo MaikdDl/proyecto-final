@@ -8,9 +8,12 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { AuthState } from './store/auth.state';
+import { SharedModule } from '../shared/shared.module';
+import { ClickPreventDefaultDirective } from './directive/click-prevent-default-directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [AccesoComponent, RexistroComponent],
+  declarations: [AccesoComponent, RexistroComponent, ClickPreventDefaultDirective],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -18,7 +21,8 @@ import { AuthState } from './store/auth.state';
     ReactiveFormsModule,
     HttpClientModule,
     NgZorroAntdModule,
-    NgxsModule.forFeature([AuthState])
+    NgxsModule.forFeature([AuthState]),
+    FontAwesomeModule
   ],
   exports: [AccesoComponent, RexistroComponent]
 })

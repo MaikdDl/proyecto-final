@@ -9,7 +9,6 @@ export class Login {
 export class LoginSuccess {
   static readonly type = '[Auth] LoginSuccess';
   constructor(public loginResponse: LoginResponse) {
-    console.log("Paso por el LoginSuccess");
   }
 }
 
@@ -31,4 +30,13 @@ export class RegisterSuccess {
 export class RegisterFailed {
   static type = '[Auth] RegisterFailed';
   constructor(public errors: Error[]) { }
+}
+
+export class UpdateUrl {
+  static type = '[Auth] UpdateUrl';
+  constructor(public url) { }
+}
+
+export class Logout {
+  static type = '[Auth] Logout';
 }

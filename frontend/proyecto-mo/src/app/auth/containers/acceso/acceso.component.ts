@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, ControlContainer } from "@angular/forms";
-import { AuthService } from '../../services/auth.service';
 import { Store } from "@ngxs/store";
-import { Login } from '../../store/auth.actions';
+import { Login, UpdateUrl, Logout } from '../../store/auth.actions';
+import { Router } from '@angular/router';
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'mo-acceso',
@@ -12,6 +13,7 @@ import { Login } from '../../store/auth.actions';
 export class AccesoComponent implements OnInit {
 
   validateForm: FormGroup;
+  logoutIcon = faSignOutAlt;
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -20,7 +22,7 @@ export class AccesoComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder, private store: Store) { }
+  constructor(private fb: FormBuilder, private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -33,5 +35,16 @@ export class AccesoComponent implements OnInit {
     if (this.validateForm.valid) {
       this.store.dispatch(new Login(this.validateForm.value));
     }
+  }
+
+  abrirPopup() {
+    const url = window.location;
+
+    this.store.dispatch(new UpdateUrl(url.pathname));
+    window.location.href = (url.pathname + '#popup');
+  }
+
+  logoutUser() {
+    this.store.dispatch(new Logout());
   }
 }

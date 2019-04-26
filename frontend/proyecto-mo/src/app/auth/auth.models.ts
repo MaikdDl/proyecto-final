@@ -3,6 +3,7 @@ export interface Auth {
   email: string;
   accessToken: string;
   expiresIn: number;
+  location: string;
 }
 
 export interface LoginRequest {
@@ -24,3 +25,4 @@ export interface RegisterRequest {
   email: string;
   password: string;
 }
+

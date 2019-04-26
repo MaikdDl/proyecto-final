@@ -68,5 +68,9 @@ export class RexistroComponent implements OnInit {
     Object.values(formGroup.controls).forEach(control =>
       control.markAsTouched());
   }
+  url = window.location.pathname;
+  cerrarPopup() {
+    window.location.href = this.url.replace('#popup', '');
+  }
 
 }

@@ -10,8 +10,6 @@ import { RouterModule } from '@angular/router';
 import { SiteLayoutHeaderFormsComponent } from './components/site-layout-header/site-layout-header-forms/site-layout-header-forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from '../auth/auth.module';
-import { ClickPreventDefaultDirective } from './directives/click-prevent-default-directive';
-import { IfDirective } from './directives/if.directive';
 
 @NgModule({
   declarations: [
@@ -19,8 +17,6 @@ import { IfDirective } from './directives/if.directive';
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
     SiteLayoutHeaderFormsComponent,
-    ClickPreventDefaultDirective,
-    IfDirective,
   ],
   imports: [CommonModule,
     RouterModule,
@@ -35,8 +31,6 @@ import { IfDirective } from './directives/if.directive';
     SiteLayoutFooterComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutHeaderFormsComponent,
-    ClickPreventDefaultDirective,
-    IfDirective,
   ],
 })
 export class SharedModule { }

@@ -29,7 +29,7 @@
           <a href="">A miña conta</a>
         </li>
         <li>
-          <a href="">Pechar sesión</a>
+          <a (click)="logoutUser()">Pechar sesión <fa-icon [icon]="logoutIcon"></fa-icon></a>
         </li>
       </ul>
     </nav>
@@ -37,8 +37,7 @@
   </nz-form-item>
   <div>
     ou podes
-    <a href="#popup" class="popup-link">rexistrarte agora</a>
-    <!-- <a routerLink="/">rexistrarte agora</a> -->
+    <a moPreventDefault href="" (click)="abrirPopup()" class="popup-link">rexistrarte agora</a>
   </div>
 </form>
 <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>

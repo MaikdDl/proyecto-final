@@ -6,10 +6,13 @@ import {
   LoginFailed,
   RegisterSuccess,
   RegisterFailed,
-  Register
+  Register,
+  UpdateUrl,
+  Logout
 } from './auth.actions';
 import { Auth } from '../auth.models';
 import { tap, catchError } from "rxjs/operators";
+import { Navigate } from '@ngxs/router-plugin';
 
 @State<Auth>({
   name: 'auth',
@@ -47,12 +50,21 @@ export class AuthState {
 
   @Action(RegisterSuccess)
   registerSuccess(ctx: StateContext<Auth>) {
-    console.log("PAso por el registerSuccess");
-
   }
 
   @Action([LoginFailed, RegisterFailed])
   error(ctx: StateContext<Auth>, { errors }: any) {
-    console.log("PAso por el registerFAiled");
+  }
+
+  @Action(UpdateUrl)
+  updateUrl({ patchState }: StateContext<Auth>, { url }) {
+    patchState({ location: url })
+  }
+
+  @Action(Logout)
+  logout({ setState, dispatch }: StateContext<Auth>) {
+    this.authService.logout();
+    setState(null);
+    dispatch(new Navigate(['/inicio']));
   }
 }
