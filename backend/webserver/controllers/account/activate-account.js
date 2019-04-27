@@ -23,11 +23,12 @@ async function activate(req, res, next) {
     const resultActivateUser = await connection.query(sqlActivateQuery);
 
     if (resultActivateUser[0].affectedRows === 1) {
+      // return res.redirect(tulocalhostfrontend/todook)
       connection.release();
-      return res.send('A túa conta foi activada correctamente')
+      return res.send('A túa conta foi activada correctamente. Podes acceder a túa conta no seguinte enlace: ')
     }
     connection.release();
-    return res.send('O código de verificación non é válido')
+    return res.send('O código de verificación non é válido');
   } catch (e) {
     return res.status(500).send(e.message);
   }

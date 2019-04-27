@@ -66,11 +66,11 @@ export class RexistroComponent implements OnInit {
 
   markFormGroupAsTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control =>
-      control.markAsTouched());
+      control.markAsDirty());
   }
   url = window.location.pathname;
   cerrarPopup() {
-    window.location.href = this.url.replace('#popup', '');
+    window.location.hash = "";
   }
 
 }

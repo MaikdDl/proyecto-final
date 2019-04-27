@@ -19,12 +19,11 @@ import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { SharedModule } from "./shared/shared.module";
 import { environment } from 'src/environments/environment';
-import { CardComponent } from './shared/components/card/card.component';
 
 registerLocaleData(es);
 
 @NgModule({
-  declarations: [AppComponent, CardComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     NgxsReduxDevtoolsPluginModule.forRoot(),

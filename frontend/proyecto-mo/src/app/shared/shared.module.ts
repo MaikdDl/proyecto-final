@@ -7,16 +7,16 @@ import { SiteLayoutComponent } from './components/site-layout/site-layout.compon
 import { SiteLayoutHeaderComponent } from './components/site-layout-header/site-layout-header.component';
 import { SiteLayoutFooterComponent } from './components/site-layout-footer/site-layout-footer.component';
 import { RouterModule } from '@angular/router';
-import { SiteLayoutHeaderFormsComponent } from './components/site-layout-header/site-layout-header-forms/site-layout-header-forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from '../auth/auth.module';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     SiteLayoutComponent,
     SiteLayoutHeaderComponent,
     SiteLayoutFooterComponent,
-    SiteLayoutHeaderFormsComponent,
+    CardComponent
   ],
   imports: [CommonModule,
     RouterModule,
@@ -30,7 +30,7 @@ import { AuthModule } from '../auth/auth.module';
     SiteLayoutComponent,
     SiteLayoutFooterComponent,
     SiteLayoutHeaderComponent,
-    SiteLayoutHeaderFormsComponent,
+    CardComponent
   ],
 })
 export class SharedModule { }

@@ -4,6 +4,7 @@ import { PacksRoutingModule } from "./packs-routing.module";
 import { PacksComponent } from './component/packs/packs.component';
 import { AuthModule } from '../auth/auth.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [PacksComponent],
@@ -11,7 +12,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     CommonModule,
     PacksRoutingModule,
     AuthModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    SharedModule
   ]
 })
 

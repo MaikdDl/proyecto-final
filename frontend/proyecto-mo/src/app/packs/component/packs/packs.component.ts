@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./packs.component.scss']
 })
 export class PacksComponent implements OnInit {
-
+  size = 'large';
   constructor() { }
 
   ngOnInit() {

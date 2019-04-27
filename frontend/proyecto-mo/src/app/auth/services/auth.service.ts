@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
 
 export class AuthService {
   constructor(private http: HttpClient) { }
-
   login({ email, password }) {
     return this.http.post<LoginResponse>(`${environment.apiBaseUrl}/account/login`, {
       email,
