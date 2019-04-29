@@ -1,7 +1,9 @@
-<!-- <div>
-
-  <p>Esto es una prueba
-  </p>
-
-</div> -->
-<mo-card></mo-card>
+<div nz-row>
+  <ng-container *ngFor="let card of cards$ | async">
+    <!-- <article> -->
+    <div nz-col nzSpan="8">
+      <mo-card [card]="card"></mo-card>
+    </div>
+    <!-- </article> -->
+  </ng-container>
+</div>

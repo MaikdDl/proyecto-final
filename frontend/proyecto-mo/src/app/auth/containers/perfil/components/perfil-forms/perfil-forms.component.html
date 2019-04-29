@@ -1,0 +1,17 @@
+<div>
+  <ul>
+    <li [class.selected]="isProfileFormVisible">
+      <a snPreventDefault href="" (click)="toggleForm(true)">Rexistro</a>
+    </li>
+    <li [class.selected]="!isProfileFormVisible">
+      <a snPreventDefault href="" (click)="toggleForm(false)">Acceso</a>
+    </li>
+  </ul>
+
+  <div class="profile-form" *ngIf="profileFormVisible">
+    <sn-register></sn-register>
+  </div>
+  <div class="view-orders" *ngIf="!isProfileFormVisible">
+    <sn-login></sn-login>
+  </div>
+</div>

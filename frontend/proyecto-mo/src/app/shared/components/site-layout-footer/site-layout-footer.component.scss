@@ -1,13 +1,18 @@
 @import '../../../../scss/colors.scss';
 
 
-p {
+footer {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: flex-start;
   font-size: 1em;
-  margin: 0 10px;
+  padding: 0 10px;
   // justify-self: start;
   color: black;
+  background-color: $main;
+  }
+  p{
+    padding: 10px 0 20px 0;
+    
   }

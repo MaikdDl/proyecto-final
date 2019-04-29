@@ -5,6 +5,8 @@ import { PacksComponent } from './component/packs/packs.component';
 import { AuthModule } from '../auth/auth.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { SharedModule } from '../shared/shared.module';
+import { NgxsModule } from '@ngxs/store';
+import { CardsState } from '../shared/components/card/store/card.state';
 
 @NgModule({
   declarations: [PacksComponent],
@@ -13,7 +15,8 @@ import { SharedModule } from '../shared/shared.module';
     PacksRoutingModule,
     AuthModule,
     NgZorroAntdModule,
-    SharedModule
+    SharedModule,
+    NgxsModule.forFeature([CardsState])
   ]
 })
 

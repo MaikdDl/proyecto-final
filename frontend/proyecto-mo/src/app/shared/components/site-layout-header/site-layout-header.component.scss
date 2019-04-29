@@ -5,28 +5,35 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 290px;
+
   nav {
     background-color: $main;
     font-size: 1.2rem;
     text-decoration: none;
-    padding: 10px 0 10px 0;
+    height: auto;
     width: 100%;
     // font-family: 'Knewave', cursive;
     font-family: 'Raleway', sans-serif;
+  }
+  ul {
+    display: flex;
   }
   a menu {
     color: $white;
   }
   li {
-    display: inline;
-    //  justify-content: center;
-    padding: 10px;
+    
+    margin: 0 auto;
+    // width: 14%;
+    text-align: center;
+    padding: 1rem
   }
   li:hover {
     background-color: $contrast;
     // color: $main;
-    }
-   
+  }
+  
   img.logo { 
     width: 150px;
     height: 150px;
@@ -36,3 +43,7 @@
 
 
 
+
+.mg-top{
+  margin-top: 10px;
+}

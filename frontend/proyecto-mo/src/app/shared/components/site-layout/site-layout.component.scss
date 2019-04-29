@@ -1,18 +1,49 @@
 @import '../../../../scss/colors.scss';
 
 :host {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 250px 1fr 50px;
-  height: 100%;
+  // display: grid;
+  // grid-template-columns: 1fr;
+  // grid-template-rows: 250px 1fr 50px;
+  height: auto;
   margin: 0 auto;
 
   mo-site-layout-header {
     background-color: $white;
   }
+  mo-site-layout-content {
+    background-color: $contrast;
+  }
   mo-site-layout-footer {
     background-color: $main;
   }
+
+  // nav {
+    
+  //   background-color: $main;
+  //   font-size: 1.2rem;
+  //   text-decoration: none;
+  //   width: 100%;
+  //   height: 10%;
+  //   // font-family: 'Knewave', cursive;
+  //   font-family: 'Raleway', sans-serif;
+  // }
+  // ul {
+  //   display: flex;
+  // }
+  // a menu {
+  //   color: $white;
+  // }
+  // li {
+
+  //   margin: 0 auto;
+  //   width: 14%;
+  //   text-align: center;
+  //   padding: 1rem
+  // }
+  // li:hover {
+  //   background-color: $contrast;
+  //   // color: $main;
+  //   }
   
 
 }

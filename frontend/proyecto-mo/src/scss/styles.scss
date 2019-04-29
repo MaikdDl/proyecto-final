@@ -5,9 +5,9 @@
 
 html {
   overflow-y: auto !important;
+  background-color: $dark;
 
   body {
-    background-color: $light;
     font-family: 'Raleway', sans-serif;
     height: 100%;
     color: $dark;
@@ -63,10 +63,7 @@ Remove outlines for tab focus
 }
 
 // Beautiful scrollbars
-::-webkit-scrollbar {
-  width: 3px;
-}
+// ::-webkit-scrollbar {
+//   width: 3px;
+// }
 
-::-webkit-scrollbar-thumb {
-  background-color: $main;
-}

@@ -19,6 +19,7 @@ import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { SharedModule } from "./shared/shared.module";
 import { environment } from 'src/environments/environment';
+import { AccountModule } from './account/account.module';
 
 registerLocaleData(es);
 
@@ -30,8 +31,8 @@ registerLocaleData(es);
     NgxsLoggerPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
     NgxsModule.forRoot([], {
-      // developmentMode: !environment.production
-      developmentMode: false
+      developmentMode: !environment.production
+      // developmentMode: false
     }),
     AppRoutingModule,
     InicioModule,
@@ -39,6 +40,7 @@ registerLocaleData(es);
     ProdutosModule,
     PacksModule,
     SharedModule,
+    AccountModule,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
