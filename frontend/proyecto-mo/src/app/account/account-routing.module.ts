@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
 import { SiteLayoutComponent } from '../shared/components/site-layout/site-layout.component';
-import { AccountComponent } from './component/account/account.component';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   {

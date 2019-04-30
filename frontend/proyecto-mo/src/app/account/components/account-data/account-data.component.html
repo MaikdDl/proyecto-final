@@ -1,0 +1,17 @@
+<div>
+  <ul>
+    <li [class.selected]="isProfileFormVisible">
+      <a snPreventDefault href="" (click)="toggleForm(true)">Os meus datos</a>
+    </li>
+    <li [class.selected]="!isProfileFormVisible">
+      <a snPreventDefault href="" (click)="toggleForm(false)">Os meus pedidos</a>
+    </li>
+  </ul>
+
+  <div class="profile-form" *ngIf="isProfileFormVisible">
+    <mo-profile></mo-profile>
+  </div>
+  <div class="orders" *ngIf="!isProfileFormVisible">
+    <mo-orders></mo-orders>
+  </div>
+</div>
