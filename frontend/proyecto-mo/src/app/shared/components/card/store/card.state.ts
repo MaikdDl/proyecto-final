@@ -1,7 +1,7 @@
 import { Store, Action, StateContext, State, Selector } from '@ngxs/store';
 import { catchError, tap } from 'rxjs/operators';
 import { CardService } from '../services/card.service';
-import { Card, Cards } from 'src/app/shared/shared.models';
+import { Cards } from 'src/app/shared/shared.models';
 import { GetPacksSuccess, GetPacksFailed, GetPacks } from './card.actions';
 
 

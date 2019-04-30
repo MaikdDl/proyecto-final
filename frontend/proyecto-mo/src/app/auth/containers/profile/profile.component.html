@@ -1,11 +1,7 @@
-<form nz-form [formGroup]="accountForm" (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="profileForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24">Correo electrónico</nz-form-label>
-    <nz-form-label [nzSm]="6" [nzXs]="24">jeremias@yopmail.com</nz-form-label>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password">Contrasinal</nz-form-label>
-    <nz-form-label [nzSm]="6" [nzXs]="24" type="password">Password</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24"></nz-form-label>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
@@ -15,7 +11,7 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="name" formControlName="name" />
-      <nz-form-explain *ngIf="accountForm.get('name')?.dirty && accountForm.get('name')?.errors">Por favor,
+      <nz-form-explain *ngIf="profileForm.get('name')?.dirty && profileForm.get('name')?.errors">Por favor,
         introduce o teu nome!</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -27,7 +23,7 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="firstSurname" formControlName="firstSurname" />
-      <nz-form-explain *ngIf="accountForm.get('firstSurname')?.dirty && accountForm.get('firstSurname')?.errors">Por
+      <nz-form-explain *ngIf="profileForm.get('firstSurname')?.dirty && profileForm.get('firstSurname')?.errors">Por
         favor
         introduce o teu primer apelido!</nz-form-explain>
     </nz-form-control>
@@ -50,7 +46,7 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="nif" formControlName="nif" />
-      <nz-form-explain *ngIf="accountForm.get('nif')?.dirty && accountForm.get('nif')?.errors">Por favor,
+      <nz-form-explain *ngIf="profileForm.get('nif')?.dirty && profileForm.get('nif')?.errors">Por favor,
         introduce oteu documento de identidade!</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -62,7 +58,7 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="address" formControlName="address" />
-      <nz-form-explain *ngIf="accountForm.get('address')?.dirty && accountForm.get('address')?.errors">Por favor
+      <nz-form-explain *ngIf="profileForm.get('address')?.dirty && profileForm.get('address')?.errors">Por favor
         introduce o teu enderezo!</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -74,7 +70,7 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="zipCode" formControlName="zipCode" />
-      <nz-form-explain *ngIf="accountForm.get('zipCode')?.dirty && accountForm.get('zipCode')?.errors">Por favor,
+      <nz-form-explain *ngIf="profileForm.get('zipCode')?.dirty && profileForm.get('zipCode')?.errors">Por favor,
         introduce o teu código ou distrito postal!</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -86,7 +82,7 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="country" formControlName="country" />
-      <nz-form-explain *ngIf="accountForm.get('country')?.dirty && accountForm.get('country')?.errors">Por favor,
+      <nz-form-explain *ngIf="profileForm.get('country')?.dirty && profileForm.get('country')?.errors">Por favor,
         introduce o teu país!</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -98,7 +94,7 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24">
       <input nz-input id="phoneNumber" formControlName="phoneNumber" />
-      <nz-form-explain *ngIf="accountForm.get('phoneNumber')?.dirty && accountForm.get('phoneNumber')?.errors">Por
+      <nz-form-explain *ngIf="profileForm.get('phoneNumber')?.dirty && profileForm.get('phoneNumber')?.errors">Por
         favor,
         introduce o teu número de teléfono!</nz-form-explain>
     </nz-form-control>
@@ -107,7 +103,7 @@
     <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>Data de nacemento</nz-form-label>
     <nz-form-control [nzSm]="16" [nzXs]="24">
       <nz-date-picker id="birthday" formControlName="birthday"></nz-date-picker>
-      <nz-form-explain *ngIf="accountForm.get('birthday')?.dirty && accountForm.get('birthday')?.errors">Por favor,
+      <nz-form-explain *ngIf="profileForm.get('birthday')?.dirty && profileForm.get('birthday')?.errors">Por favor,
         introduce a túa data de nacemento!</nz-form-explain>
     </nz-form-control>
   </nz-form-item>

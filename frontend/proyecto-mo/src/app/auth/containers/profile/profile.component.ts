@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Select } from '@ngxs/store';
+import { AuthState } from '../../store/auth.state';
+import { Observable } from 'rxjs';
+import { Auth } from '../../auth.models';
 
 @Component({
   selector: 'mo-profile',
@@ -8,31 +12,46 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  accountForm: FormGroup;
+  @Select(AuthState) user$: Observable<Auth>
+  profileForm: FormGroup;
 
   submitForm(): void {
-    for (const i in this.accountForm.controls) {
-      this.accountForm.controls[i].markAsDirty();
-      this.accountForm.controls[i].updateValueAndValidity();
+    for (const i in this.profileForm.controls) {
+      this.profileForm.controls[i].markAsDirty();
+      this.profileForm.controls[i].updateValueAndValidity();
     }
   }
-
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.accountForm = this.fb.group({
-      email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required]],
-      name: [null, [Validators.required]],
-      firstSurname: [null, [Validators.required]],
-      secondSurname: [],
-      nif: [null, [Validators.required]],
-      address: [null, [Validators.required]],
-      zipCode: [null, [Validators.required]],
-      country: [null, [Validators.required]],
-      phoneNumber: [null, [Validators.required]],
-      birthday: [null, [Validators.required]]
+    this.profileForm = this.fb.group({
+      email: ['', [Validators.email, Validators.required]],
+      name: ['', [Validators.required]],
+      firstSurname: ['', [Validators.required]],
+      secondSurname: [''],
+      nif: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      zipCode: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
+      birthday: ['', [Validators.required]]
     });
+
+    this.user$.subscribe(user => {
+      this.profileForm.setValue({
+        email: user.email || '',
+        name: user.name || '',
+        firstSurname: user.firstSurname || '',
+        secondSurname: user.secondSurname || '',
+        nif: user.nif || '',
+        address: user.address || '',
+        zipCode: user.zipCode || '',
+        country: user.country || '',
+        phoneNumber: user.phoneNumber || '',
+        birthday: user.birthday || ''
+      })
+    })
+
   }
 
 }

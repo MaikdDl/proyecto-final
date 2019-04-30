@@ -1,9 +1,20 @@
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+
 export interface Auth {
   uuid: string;
   email: string;
-  accessToken: string;
   expiresIn: number;
+  accessToken: string;
   location: string;
+  name: string;
+  firstSurname: string;
+  secondSurname: string;
+  nif: number;
+  address: string;
+  zipCode: number;
+  country: string;
+  phoneNumber: string;
+  birthday: number;
 }
 
 export interface LoginRequest {

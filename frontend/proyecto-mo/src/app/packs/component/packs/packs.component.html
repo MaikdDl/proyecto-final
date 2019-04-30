@@ -1,9 +1,9 @@
 <div nz-row>
-  <ng-container *ngFor="let card of cards$ | async">
+  <div class="card" *ngFor="let card of cards$ | async">
     <!-- <article> -->
     <div nz-col nzSpan="8">
       <mo-card [card]="card"></mo-card>
     </div>
     <!-- </article> -->
-  </ng-container>
+  </div>
 </div>

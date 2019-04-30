@@ -1,4 +1,4 @@
-import { LoginRequest, LoginResponse, RegisterRequest } from '../auth.models';
+import { LoginRequest, LoginResponse, RegisterRequest, Auth } from '../auth.models';
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -35,6 +35,20 @@ export class RegisterFailed {
 export class UpdateUrl {
   static type = '[Auth] UpdateUrl';
   constructor(public url) { }
+}
+
+export class GetUserProfile {
+  static readonly type = '[Auth] GetUserProfile';
+}
+
+export class GetUserProfileSuccess {
+  static readonly type = '[Auth] GetUserProfileSuccess';
+  constructor(public profile: Auth) { }
+}
+
+export class GetUserProfileFailed {
+  static type = '[Auth] GetUserProfileFailed';
+  constructor(public error: Error[]) { }
 }
 
 export class Logout {

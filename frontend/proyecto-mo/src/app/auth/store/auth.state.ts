@@ -8,7 +8,10 @@ import {
   RegisterFailed,
   Register,
   UpdateUrl,
-  Logout
+  Logout,
+  GetUserProfileSuccess,
+  GetUserProfileFailed,
+  GetUserProfile
 } from './auth.actions';
 import { Auth } from '../auth.models';
 import { tap, catchError } from "rxjs/operators";
@@ -52,7 +55,23 @@ export class AuthState {
   registerSuccess(ctx: StateContext<Auth>) {
   }
 
-  @Action([LoginFailed, RegisterFailed])
+  @Action(GetUserProfile)
+  getUserProfile({ dispatch }: StateContext<Auth>, ) {
+    return this.authService.getUserProfile().pipe(
+      tap(profileResponse => dispatch(new GetUserProfileSuccess(profileResponse))),
+      catchError(error => dispatch(new GetUserProfileFailed(error.error)))
+    );
+  }
+
+  @Action(GetUserProfileSuccess)
+  getUserProfileSuccess(
+    { setState }: StateContext<Auth>,
+    { profile }: GetUserProfileSuccess
+  ) {
+    setState({ ...profile });
+  }
+
+  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
   error(ctx: StateContext<Auth>, { errors }: any) {
   }
 

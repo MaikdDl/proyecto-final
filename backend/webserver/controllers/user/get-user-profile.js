@@ -7,10 +7,25 @@ async function getUserProfile(req, res, next) {
 
   const connection = await mysqlPool.getConnection();
 
-  const [userData] = await connection.query(`SELECT email, password, nombre, apellido1, apellido2, nif, direccion, cp,
+  const [userData] = await connection.query(`SELECT email, nombre, apellido1, apellido2, nif, direccion, cp,
   pais, telefono, fecha_nacimiento FROM Proyecto_MO.usuario INNER JOIN Proyecto_MO.cliente ON uuid= cliente_uuid WHERE uuid= '${uuid}'`);
 
-  return res.status(200).send(userData);
+  const [data] = userData;
+
+  const userProfileData = {
+    email: data.email,
+    name: data.nombre,
+    firstSurname: data.apellido1,
+    secondSurname: data.apellido2,
+    nif: data.nif,
+    address: data.direccion,
+    zipCode: data.cp,
+    country: data.pais,
+    phoneNumber: data.telefono,
+    birthday: data.fecha_nacimiento
+  }
+  console.log(userProfileData);
+  return res.status(200).send(userProfileData);
 }
 
 module.exports = getUserProfile;

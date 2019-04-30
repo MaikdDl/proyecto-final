@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LoginResponse } from '../auth.models';
+import { LoginResponse, Auth } from '../auth.models';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -39,6 +40,10 @@ export class AuthService {
       apellido1,
       apellido2
     })
+  }
+
+  getUserProfile(): Observable<Auth> {
+    return this.http.get<Auth>(`${environment.apiBaseUrl}/user`);
   }
 
   logout() {

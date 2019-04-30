@@ -1,0 +1,14 @@
+@import '../../../../scss/colors.scss';
+
+h1 {
+  color: $main;
+}
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+}
+p {
+  color: black;
+}
