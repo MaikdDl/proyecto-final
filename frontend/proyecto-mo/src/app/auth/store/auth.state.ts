@@ -11,11 +11,18 @@ import {
   Logout,
   GetUserProfileSuccess,
   GetUserProfileFailed,
-  GetUserProfile
+  GetUserProfile,
+  UpdateUserProfile,
+  UpdateUserProfileSuccess,
+  UpdateUserProfileFailed,
+  MakeOrder,
+  MakeOrderSuccess,
+  MakeOrderFailed
 } from './auth.actions';
-import { Auth } from '../auth.models';
+import { Auth, Profile, Order } from '../auth.models';
 import { tap, catchError } from "rxjs/operators";
 import { Navigate } from '@ngxs/router-plugin';
+
 
 @State<Auth>({
   name: 'auth',
@@ -65,13 +72,53 @@ export class AuthState {
 
   @Action(GetUserProfileSuccess)
   getUserProfileSuccess(
-    { setState }: StateContext<Auth>,
+    { patchState }: StateContext<Auth>,
     { profile }: GetUserProfileSuccess
   ) {
-    setState({ ...profile });
+    patchState({ ...profile });
   }
 
-  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
+  @Action(UpdateUserProfile, { cancelUncompleted: true })
+  updateUserProfile(
+    { dispatch }: StateContext<Auth>,
+    { profile }: UpdateUserProfile
+  ) {
+    return this.authService.updateUserProfile(profile).pipe(
+      tap(() => dispatch(new UpdateUserProfileSuccess(profile))),
+      catchError(error => dispatch(new UpdateUserProfileFailed(error.error)))
+    );
+  }
+
+  @Action(UpdateUserProfileSuccess)
+  updateUserProfileSuccess(
+    { patchState }: StateContext<Profile>,
+    { profile }: UpdateUserProfileSuccess
+  ) {
+    patchState({ ...profile }
+    );
+  }
+
+  @Action(MakeOrder)
+  makeOrder(
+    { dispatch }: StateContext<Order>,
+    { order }: MakeOrder
+  ) {
+    return this.authService.makeOrder(order).pipe(
+      tap(() => dispatch(new MakeOrderSuccess(order))),
+      catchError(error => dispatch(new MakeOrderFailed(error.error)))
+    );
+  }
+
+  @Action(MakeOrderSuccess)
+  makeOrderSuccess(
+    { patchState }: StateContext<Order>,
+    { order }: MakeOrderSuccess
+  ) {
+    patchState({ ...order }
+    );
+  }
+
+  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed, UpdateUserProfileFailed])
   error(ctx: StateContext<Auth>, { errors }: any) {
   }
 

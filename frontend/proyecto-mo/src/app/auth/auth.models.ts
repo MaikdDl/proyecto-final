@@ -1,4 +1,3 @@
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 export interface Auth {
   uuid: string;
@@ -37,3 +36,20 @@ export interface RegisterRequest {
   password: string;
 }
 
+export interface Profile {
+  name: string;
+  firstSurname: string;
+  secondSurname: string;
+  nif: number;
+  address: string;
+  zipCode: number;
+  country: string;
+  phoneNumber: string;
+  birthday: number;
+}
+
+export interface Order {
+  productoId: number;
+  productDescription: string;
+  productUnits: number;
+}

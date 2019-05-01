@@ -1,0 +1,13 @@
+<ng-container *ngIf="currentUser; else session">
+  <mo-profile></mo-profile>
+</ng-container>
+<ng-template #session>
+  <div class="modal-wrapper" id="popup">
+    <div class="popup-contenedor">
+      <div>
+        <p>Por favor, accede coa tua conta, ou rexístrate para realizar a túa compra</p>
+      </div>
+      <a (click)="cerrarPopup()" class="popup-cerrar">X</a>
+    </div>
+  </div>
+</ng-template>

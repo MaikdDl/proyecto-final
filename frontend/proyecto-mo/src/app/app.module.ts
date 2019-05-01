@@ -20,6 +20,7 @@ import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { SharedModule } from "./shared/shared.module";
 import { environment } from 'src/environments/environment';
 import { AccountModule } from './account/account.module';
+import { CompraModule } from './auth/containers/compra/compra.module';
 
 registerLocaleData(es);
 
@@ -41,6 +42,7 @@ registerLocaleData(es);
     PacksModule,
     SharedModule,
     AccountModule,
+    CompraModule,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,

@@ -1,4 +1,4 @@
-import { LoginRequest, LoginResponse, RegisterRequest, Auth } from '../auth.models';
+import { LoginRequest, LoginResponse, RegisterRequest, Profile, Auth, Order } from '../auth.models';
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -49,6 +49,40 @@ export class GetUserProfileSuccess {
 export class GetUserProfileFailed {
   static type = '[Auth] GetUserProfileFailed';
   constructor(public error: Error[]) { }
+}
+
+export class UpdateUserProfile {
+  static readonly type = '[Auth] UpdateUserProfile';
+  constructor(public profile: Profile) {
+  }
+}
+
+export class UpdateUserProfileSuccess {
+  static readonly type = '[Auth] UpdateUserProfileSuccess';
+  constructor(public profile: Profile) {
+    console.log("por aquí paso, Success");
+  }
+}
+
+export class UpdateUserProfileFailed {
+  static readonly type = '[Auth] UpdateUserProfileFailed';
+  constructor(public errors: Error[]) { }
+}
+
+export class MakeOrder {
+  static readonly type = '[Auth] MakeOrder';
+  constructor(public order: Order) {
+  }
+}
+
+export class MakeOrderSuccess {
+  static readonly type = '[Auth] MakeOrderSuccess';
+  constructor(public order: Order) {
+  }
+}
+export class MakeOrderFailed {
+  static readonly type = '[Auth] MakeOrderFailed';
+  constructor(public errors: Error[]) { }
 }
 
 export class Logout {

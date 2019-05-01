@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Select } from '@ngxs/store';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Select, Store } from '@ngxs/store';
 import { AuthState } from '../../store/auth.state';
 import { Observable } from 'rxjs';
-import { Auth } from '../../auth.models';
+import { Profile } from '../../auth.models';
+import { UpdateUserProfile } from '../../store/auth.actions';
+
 
 @Component({
   selector: 'mo-profile',
@@ -12,8 +14,7 @@ import { Auth } from '../../auth.models';
 })
 export class ProfileComponent implements OnInit {
 
-  @Select(AuthState) user$: Observable<Auth>
-  profileForm: FormGroup;
+  @Select(AuthState) user$: Observable<Profile>
 
   submitForm(): void {
     for (const i in this.profileForm.controls) {
@@ -21,11 +22,8 @@ export class ProfileComponent implements OnInit {
       this.profileForm.controls[i].updateValueAndValidity();
     }
   }
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
-    this.profileForm = this.fb.group({
-      email: ['', [Validators.email, Validators.required]],
+  profileForm = this.fb.group(
+    {
       name: ['', [Validators.required]],
       firstSurname: ['', [Validators.required]],
       secondSurname: [''],
@@ -35,11 +33,14 @@ export class ProfileComponent implements OnInit {
       country: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
       birthday: ['', [Validators.required]]
-    });
+    },
+    { updateOn: 'blur' }
+  );
+  constructor(private fb: FormBuilder, private store: Store) { }
 
+  ngOnInit() {
     this.user$.subscribe(user => {
       this.profileForm.setValue({
-        email: user.email || '',
         name: user.name || '',
         firstSurname: user.firstSurname || '',
         secondSurname: user.secondSurname || '',
@@ -50,8 +51,14 @@ export class ProfileComponent implements OnInit {
         phoneNumber: user.phoneNumber || '',
         birthday: user.birthday || ''
       })
-    })
-
+    });
   }
 
+  updateProfile() {
+    if (!this.profileForm.valid) {
+      return;
+    }
+    this.store.dispatch(new UpdateUserProfile(this.profileForm.value));
+  }
 }
+

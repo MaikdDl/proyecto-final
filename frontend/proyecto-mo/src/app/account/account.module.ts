@@ -5,6 +5,8 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from "./components/account/account.component";
 import { AccountDataComponent } from "./components/account-data/account-data.component";
 import { AuthModule } from '../auth/auth.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from '../auth/services/jwt.interceptor';
 
 
 
@@ -15,7 +17,10 @@ import { AuthModule } from '../auth/auth.module';
     AccountRoutingModule,
     AuthModule,
     NgZorroAntdModule,
-  ]
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
 })
 
 export class AccountModule { }

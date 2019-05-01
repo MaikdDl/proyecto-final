@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { UpdateUrl } from 'src/app/auth/store/auth.actions';
 
 @Component({
   selector: 'mo-card',
@@ -9,13 +11,16 @@ export class CardComponent implements OnInit {
   size = 'large';
 
   @Input() card;
-  constructor() { }
+  constructor(public store: Store) { }
 
   ngOnInit() {
   }
 
-  // mercar() {
-  //   if ()
-  // }
 
+  abrirPopup() {
+    const url = window.location;
+
+    this.store.dispatch(new UpdateUrl(url.pathname));
+    window.location.href = (url.pathname + '#popup');
+  }
 }

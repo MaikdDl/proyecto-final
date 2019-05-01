@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LoginResponse, Auth } from '../auth.models';
+import { LoginResponse, Auth, Profile, Order } from '../auth.models';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -42,8 +41,17 @@ export class AuthService {
     })
   }
 
-  getUserProfile(): Observable<Auth> {
+  // getUserProfile(): Observable<Profile> {
+  getUserProfile() {
     return this.http.get<Auth>(`${environment.apiBaseUrl}/user`);
+  }
+
+  updateUserProfile(profile: Profile) {
+    return this.http.put<Profile>(`${environment.apiBaseUrl}/user/update`, profile);
+  }
+
+  makeOrder(order: Order) {
+    return this.http.post<Order>(`${environment.apiBaseUrl}/order`, order);
   }
 
   logout() {
