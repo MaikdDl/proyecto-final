@@ -1,10 +1,10 @@
 <div>
   <ul>
     <li [class.selected]="isProfileFormVisible">
-      <a snPreventDefault href="" (click)="toggleForm(true)">Os meus datos</a>
+      <a snPreventDefault (click)="toggleForm(true)">Os meus datos</a>
     </li>
     <li [class.selected]="!isProfileFormVisible">
-      <a snPreventDefault href="" (click)="toggleForm(false)">Os meus pedidos</a>
+      <a snPreventDefault (click)="toggleForm(false)">Os meus pedidos</a>
     </li>
   </ul>
 

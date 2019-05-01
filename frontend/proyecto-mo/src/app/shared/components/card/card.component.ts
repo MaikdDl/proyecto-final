@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { UpdateUrl } from 'src/app/auth/store/auth.actions';
+import { UpdateUrl, GetUserProfile } from 'src/app/auth/store/auth.actions';
 
 @Component({
   selector: 'mo-card',
@@ -16,6 +16,9 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
 
+  getUserProfile() {
+    this.store.dispatch(new GetUserProfile());
+  }
 
   abrirPopup() {
     const url = window.location;

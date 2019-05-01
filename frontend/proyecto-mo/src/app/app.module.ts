@@ -21,6 +21,7 @@ import { SharedModule } from "./shared/shared.module";
 import { environment } from 'src/environments/environment';
 import { AccountModule } from './account/account.module';
 import { CompraModule } from './auth/containers/compra/compra.module';
+import { OrderSuccessModule } from './order-success/order-success.module';
 
 registerLocaleData(es);
 
@@ -43,6 +44,7 @@ registerLocaleData(es);
     SharedModule,
     AccountModule,
     CompraModule,
+    OrderSuccessModule,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,

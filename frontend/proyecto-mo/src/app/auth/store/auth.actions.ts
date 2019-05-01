@@ -59,9 +59,7 @@ export class UpdateUserProfile {
 
 export class UpdateUserProfileSuccess {
   static readonly type = '[Auth] UpdateUserProfileSuccess';
-  constructor(public profile: Profile) {
-    console.log("por aquí paso, Success");
-  }
+  constructor(public profile: Profile) { }
 }
 
 export class UpdateUserProfileFailed {

@@ -19,4 +19,9 @@ export class PacksComponent implements OnInit {
     this.store.dispatch(new GetPacks())
   }
 
+  url = window.location.pathname;
+  cerrarPopup() {
+    window.location.hash = "";
+
+  }
 }

@@ -68,9 +68,6 @@ export class RexistroComponent implements OnInit {
     Object.values(formGroup.controls).forEach(control =>
       control.markAsDirty());
   }
-  url = window.location.pathname;
-  cerrarPopup() {
-    window.location.hash = "";
-  }
 
 }
+

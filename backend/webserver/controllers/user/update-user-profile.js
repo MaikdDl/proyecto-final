@@ -11,7 +11,7 @@ async function validate(payload) {
     secondSurname: Joi.string().min(3).max(64),
     nif: Joi.string().min(5).max(15).required(),
     address: Joi.string().min(15).max(255).required(),
-    zipCode: Joi.string().min(3).max(15).required(),
+    zipCode: Joi.number().integer().min(100).max(9999999999).required(),
     country: Joi.string().min(3).max(45).required(),
     phoneNumber: Joi.number().integer().min(100000).max(99999999999).required(),
     birthday: Joi.date().required(),

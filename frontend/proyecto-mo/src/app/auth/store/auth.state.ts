@@ -91,11 +91,12 @@ export class AuthState {
 
   @Action(UpdateUserProfileSuccess)
   updateUserProfileSuccess(
-    { patchState }: StateContext<Profile>,
+    { patchState, dispatch }: StateContext<Profile>,
     { profile }: UpdateUserProfileSuccess
   ) {
     patchState({ ...profile }
     );
+    dispatch(new Navigate(['/orderSuccess']));
   }
 
   @Action(MakeOrder)
