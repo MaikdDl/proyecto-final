@@ -65,7 +65,6 @@ async function login(req, res, next) {
 
     return res.status(404).send();
   } catch (e) {
-    console.log(e);
     return res.status(500).send(e.message);
   }
 }

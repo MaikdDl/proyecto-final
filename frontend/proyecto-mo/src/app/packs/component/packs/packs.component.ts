@@ -20,7 +20,7 @@ export class PacksComponent implements OnInit {
   }
 
   url = window.location.pathname;
-  cerrarPopup() {
+  closePopup() {
     window.location.hash = "";
 
   }

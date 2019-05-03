@@ -24,7 +24,7 @@ export class CompraComponent implements OnInit {
   }
 
   url = window.location.pathname;
-  cerrarPopup() {
+  closePopup() {
     window.location.hash = "";
   }
 }

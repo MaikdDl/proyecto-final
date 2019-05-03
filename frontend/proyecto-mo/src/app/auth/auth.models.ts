@@ -49,7 +49,7 @@ export interface Profile {
 }
 
 export interface Order {
-  productoId: number;
+  productId: number;
   productDescription: string;
   productUnits: number;
 }

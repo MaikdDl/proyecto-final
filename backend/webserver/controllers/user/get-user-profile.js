@@ -24,7 +24,6 @@ async function getUserProfile(req, res, next) {
     phoneNumber: data.telefono,
     birthday: data.fecha_nacimiento
   }
-  console.log(userProfileData);
   return res.status(200).send(userProfileData);
 }
 

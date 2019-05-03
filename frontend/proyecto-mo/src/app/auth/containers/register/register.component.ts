@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Actions, Store, ofAction } from '@ngxs/store';
+import { Actions, Store, ofAction, ofActionDispatched } from '@ngxs/store';
 import { RegisterSuccess, Register } from '../../store/auth.actions';
 
 
 @Component({
-  selector: 'mo-rexistro',
-  templateUrl: './rexistro.component.html',
-  styleUrls: ['./rexistro.component.scss']
+  selector: 'mo-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class RexistroComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   validateForm: FormGroup;
 
   submitForm(): void {
@@ -53,6 +53,9 @@ export class RexistroComponent implements OnInit {
       this.actions$
         .pipe(ofAction(RegisterSuccess))
         .subscribe(() => this.validateForm.reset());
+    this.actions$
+      .pipe(ofActionDispatched(RegisterSuccess))
+      .subscribe(() => this.closePopupRegister());
   }
 
   register() {
@@ -67,6 +70,11 @@ export class RexistroComponent implements OnInit {
   markFormGroupAsTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control =>
       control.markAsDirty());
+  }
+
+  url = window.location.pathname;
+  closePopupRegister() {
+    window.location.hash = "";
   }
 
 }

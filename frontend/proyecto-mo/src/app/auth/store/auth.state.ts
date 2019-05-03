@@ -68,6 +68,7 @@ export class AuthState {
       tap(profileResponse => dispatch(new GetUserProfileSuccess(profileResponse))),
       catchError(error => dispatch(new GetUserProfileFailed(error.error)))
     );
+
   }
 
   @Action(GetUserProfileSuccess)

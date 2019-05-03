@@ -50,7 +50,7 @@ export class AccesoComponent implements OnInit {
     }
   }
 
-  abrirPopup() {
+  openPopupRegister() {
     const url = window.location;
 
     this.store.dispatch(new UpdateUrl(url.pathname));

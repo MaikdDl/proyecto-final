@@ -25,7 +25,6 @@ async function updateUserProfile(req, res, next) {
   const userDataProfile = { ...req.body };
   const { uuid } = req.claims;
   const now = new Date();
-  // let birthdayDate = new Date();
 
   const lastChange = now.toISOString().substring(0, 19).replace('T', ' ');
 
@@ -46,9 +45,7 @@ async function updateUserProfile(req, res, next) {
     phoneNumber,
     birthday
   } = userDataProfile
-  // birthdayDate = birthday;
-  // birthdayOk = birthdayDate.toISOString().substring(0, 19).replace('T', ' ');
-  // const birthdayOk = birthday.toMysqlFormat();
+
   const birthdayOk = Date.parse(birthday);
 
 

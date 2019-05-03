@@ -33,7 +33,6 @@ export class CardsState {
 
   @Action(GetPacksSuccess)
   getPacksSuccess({ patchState }: StateContext<Cards>, { packs }: GetPacksSuccess) {
-    console.log(packs)
     patchState({ packs })
   }
   @Action(GetPacksFailed)

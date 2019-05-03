@@ -20,7 +20,7 @@ export class CardComponent implements OnInit {
     this.store.dispatch(new GetUserProfile());
   }
 
-  abrirPopup() {
+  openPopup() {
     const url = window.location;
 
     this.store.dispatch(new UpdateUrl(url.pathname));

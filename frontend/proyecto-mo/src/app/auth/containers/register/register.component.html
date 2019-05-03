@@ -20,8 +20,6 @@
       <nz-form-item>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input id="apellido2" formControlName="apellido2" placeholder="Segundo apellido" />
-          <!-- <nz-form-explain *ngIf="validateForm.get('apellido2')?.dirty && validateForm.get('apellido2')?.errors">Please input
-                         website!</nz-form-explain> -->
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
@@ -63,6 +61,6 @@
         </nz-form-control>
       </nz-form-item>
     </form>
-    <a moPreventDefault (click)="cerrarPopup()" class="popup-cerrar">X</a>
+    <a moPreventDefault (click)="closePopupRegister()" class="popup-close">X</a>
   </div>
 </div>

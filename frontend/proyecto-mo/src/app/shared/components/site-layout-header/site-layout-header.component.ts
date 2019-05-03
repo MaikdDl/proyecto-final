@@ -14,7 +14,6 @@ export class SiteLayoutHeaderComponent {
   title = 'Morriña Online';
 
   logoutUser() {
-    console.log('Logout');
     this.store.dispatch(new Logout());
   }
 }
