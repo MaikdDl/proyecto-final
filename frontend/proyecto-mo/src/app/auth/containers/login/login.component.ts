@@ -9,13 +9,13 @@ import { Auth } from "../../auth.models";
 import { AuthState } from '../../store/auth.state';
 
 @Component({
-  selector: 'mo-acceso',
-  templateUrl: './acceso.component.html',
-  styleUrls: ['./acceso.component.scss']
+  selector: 'mo-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 
 
-export class AccesoComponent implements OnInit {
+export class LoginComponent implements OnInit {
   @Select(AuthState) user$: Observable<Auth>;
 
   validateForm: FormGroup;

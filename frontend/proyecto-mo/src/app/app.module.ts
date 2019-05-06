@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicioModule } from './inicio/inicio.module';
-import { SobreNosModule } from './sobre-nos/sobre-nos.module';
+import { StartModule } from './start/start.module';
+import { AboutModule } from './about/about.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { PacksModule } from './packs/packs.module';
 import { NgZorroAntdModule, NZ_I18N, es_ES } from 'ng-zorro-antd';
@@ -20,7 +20,7 @@ import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { SharedModule } from "./shared/shared.module";
 import { environment } from 'src/environments/environment';
 import { AccountModule } from './account/account.module';
-import { CompraModule } from './auth/containers/compra/compra.module';
+import { PurchaseModule } from './auth/containers/purchase/purchase.module';
 import { OrderSuccessModule } from './order-success/order-success.module';
 
 registerLocaleData(es);
@@ -37,13 +37,13 @@ registerLocaleData(es);
       // developmentMode: false
     }),
     AppRoutingModule,
-    InicioModule,
-    SobreNosModule,
+    StartModule,
+    AboutModule,
     ProdutosModule,
     PacksModule,
     SharedModule,
     AccountModule,
-    CompraModule,
+    PurchaseModule,
     OrderSuccessModule,
     NgZorroAntdModule,
     FormsModule,

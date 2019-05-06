@@ -20,10 +20,10 @@ export class CardComponent implements OnInit {
     this.store.dispatch(new GetUserProfile());
   }
 
-  openPopup() {
-    const url = window.location;
+  // openPopup() {
+  //   const url = window.location;
 
-    this.store.dispatch(new UpdateUrl(url.pathname));
-    window.location.href = (url.pathname + '#popup');
-  }
+  //   this.store.dispatch(new UpdateUrl(url.pathname));
+  //   window.location.href = (url.pathname + '#popup');
+  // }
 }

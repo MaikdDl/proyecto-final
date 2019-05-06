@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SobreNosComponent } from './component/sobre-nos/sobre-nos.component';
+import { AboutComponent } from './component/about/about.component';
 import { SiteLayoutComponent } from '../shared/components/site-layout/site-layout.component';
 
 
@@ -10,8 +10,8 @@ const routes: Routes = [
     component: SiteLayoutComponent,
     children: [
       {
-        path: 'sobre-nos',
-        component: SobreNosComponent
+        path: 'about',
+        component: AboutComponent
       }
     ]
   }
@@ -21,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: []
 })
-export class SobreNosRoutingModule { }
+export class AboutRoutingModule { }

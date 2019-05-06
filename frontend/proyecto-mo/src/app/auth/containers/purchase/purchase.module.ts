@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { CompraRoutingModule } from './compra-routing.module';
-import { CompraComponent } from "./component/compra/compra.component";
+import { PurchaseRoutingModule } from './purchase-routing.module';
+import { PurchaseComponent } from "./component/purchase/purchase.component";
 import { AuthModule } from '../../auth.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../../services/jwt.interceptor';
@@ -10,10 +10,10 @@ import { JwtInterceptor } from '../../services/jwt.interceptor';
 
 
 @NgModule({
-  declarations: [CompraComponent],
+  declarations: [PurchaseComponent],
   imports: [
     CommonModule,
-    CompraRoutingModule,
+    PurchaseRoutingModule,
     AuthModule,
     NgZorroAntdModule,
   ],
@@ -22,4 +22,4 @@ import { JwtInterceptor } from '../../services/jwt.interceptor';
   ],
 })
 
-export class CompraModule { }
+export class PurchaseModule { }

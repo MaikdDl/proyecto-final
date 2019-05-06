@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InicioRoutingModule } from './inicio-routing.module';
-import { InicioComponent } from './component/inicio/inicio.component';
+import { StartRoutingModule } from './start-routing.module';
+import { StartComponent } from './component/start/start.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
-  declarations: [InicioComponent],
+  declarations: [StartComponent],
   imports: [
     CommonModule,
-    InicioRoutingModule,
+    StartRoutingModule,
     SharedModule,
     AuthModule,
     NgZorroAntdModule
   ],
-  exports: [InicioComponent]
+  exports: [StartComponent]
 })
-export class InicioModule { }
+export class StartModule { }

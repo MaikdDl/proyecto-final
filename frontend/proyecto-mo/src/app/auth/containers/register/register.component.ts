@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Actions, Store, ofAction, ofActionDispatched } from '@ngxs/store';
 import { RegisterSuccess, Register } from '../../store/auth.actions';
 

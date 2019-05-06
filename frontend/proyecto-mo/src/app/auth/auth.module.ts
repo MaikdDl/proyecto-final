@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
-import { AccesoComponent } from './containers/acceso/acceso.component';
+import { LoginComponent } from './containers/login/login.component';
 import { RegisterComponent } from './containers/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
@@ -17,7 +17,7 @@ import { OrdersComponent } from './containers/orders/orders.component';
 
 @NgModule({
   declarations: [
-    AccesoComponent,
+    LoginComponent,
     RegisterComponent,
     ClickPreventDefaultDirective,
     ProfileComponent,
@@ -35,6 +35,6 @@ import { OrdersComponent } from './containers/orders/orders.component';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
-  exports: [AccesoComponent, RegisterComponent, OrdersComponent, ProfileComponent]
+  exports: [LoginComponent, RegisterComponent, OrdersComponent, ProfileComponent]
 })
 export class AuthModule { }
