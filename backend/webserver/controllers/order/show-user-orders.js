@@ -6,9 +6,15 @@ async function showUserOrders(req, res, next) {
   const { uuid } = req.claims;
   const connection = await mysqlPool.getConnection();
 
-  const [orderData] = await connection.query(`SELECT * FROM Proyecto_MO.pedido WHERE cliente_uuid = '${uuid}'`);
+  const [orderData] = await connection.query(`SELECT nombre_producto, fecha_pedido FROM Proyecto_MO.pedido WHERE cliente_uuid = '${uuid}'`);
 
-  return res.status(200).send(orderData);
+  const data = orderData.map(orderItem => {
+    return {
+      productName: orderItem.nombre_producto,
+      orderDate: orderItem.fecha_pedido
+    }
+  });
+  return res.status(200).send(data);
 
 }
 

@@ -12,23 +12,23 @@ async function makeOrder(req, res, next) {
   const orderDate = now.toISOString().substring(0, 19).replace('T', ' ');
 
   const {
-    productId,
-    productoUnits,
-    productDescription
+    id_producto: productId,
+    unidades_producto: productUnits,
+    nombre_producto: productName
   } = orderData
 
   const connection = await mysqlPool.getConnection();
-
+  console.log('productId', productId);
   await connection.query(`INSERT INTO pedido SET ?`, {
     cliente_uuid: uuid,
     id_producto: productId,
-    descripcion_producto: productDescription,
-    unidades_producto: productoUnits,
+    nombre_producto: productName,
+    unidades_producto: productUnits,
     fecha_pedido: orderDate,
     ultimo_cambio: orderDate
   });
 
-  await connection.query(`UPDATE producto SET unidades = unidades - '${productoUnits}', ultimo_cambio = '${orderDate}'
+  await connection.query(`UPDATE producto SET unidades = unidades - '${productUnits}', ultimo_cambio = '${orderDate}'
   WHERE id_producto = '${productId}'`);
 
   return res.status(204).json();
