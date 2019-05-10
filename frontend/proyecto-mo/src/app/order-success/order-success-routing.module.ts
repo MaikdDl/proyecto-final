@@ -9,6 +9,7 @@ const routes: Routes = [
     component: SiteLayoutComponent,
     children: [
       {
+        // path: 'orderSuccess/:idProduct/:productName',
         path: 'orderSuccess',
         component: OrderSuccessComponent
       }

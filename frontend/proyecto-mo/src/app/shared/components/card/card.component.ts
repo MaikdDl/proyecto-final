@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { UpdateUrl, GetUserProfile } from 'src/app/auth/store/auth.actions';
+import { GetUserProfile } from 'src/app/auth/store/auth.actions';
 
 @Component({
   selector: 'mo-card',

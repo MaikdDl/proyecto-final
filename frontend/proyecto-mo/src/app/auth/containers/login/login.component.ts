@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
     this.validateForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-    });
+    },
+      { updateOn: 'blur' }
+    );
     this.user$.subscribe(user => {
       if (user && user.accessToken) {
         this.currentUser = user

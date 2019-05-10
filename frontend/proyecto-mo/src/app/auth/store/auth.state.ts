@@ -17,9 +17,12 @@ import {
   UpdateUserProfileFailed,
   MakeOrder,
   MakeOrderSuccess,
-  MakeOrderFailed
+  MakeOrderFailed,
+  ShowUserOrders,
+  ShowUserOrdersSuccess,
+  ShowUserOrdersFailed
 } from './auth.actions';
-import { Auth, Profile, Order } from '../auth.models';
+import { Auth, Profile, Order, UserOrders } from '../auth.models';
 import { tap, catchError } from "rxjs/operators";
 import { Navigate } from '@ngxs/router-plugin';
 
@@ -120,7 +123,25 @@ export class AuthState {
     );
   }
 
-  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed, UpdateUserProfileFailed])
+  @Action(ShowUserOrders)
+  showUserOrders({ dispatch }: StateContext<Auth>, ) {
+    return this.authService.showUserOrders().pipe(
+      tap(userOrdersResponse => dispatch(new ShowUserOrdersSuccess(userOrdersResponse))),
+      catchError(error => dispatch(new ShowUserOrdersFailed(error.error)))
+    );
+
+  }
+
+  @Action(ShowUserOrdersSuccess)
+  showUserOrdersSuccess(
+    { patchState }: StateContext<Auth>,
+    { userOrders }: ShowUserOrdersSuccess
+  ) {
+    patchState({ ...userOrders });
+  }
+
+
+  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed, UpdateUserProfileFailed, ShowUserOrdersFailed])
   error(ctx: StateContext<Auth>, { errors }: any) {
   }
 

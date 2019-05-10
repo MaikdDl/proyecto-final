@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LoginResponse, Auth, Profile, Order } from '../auth.models';
+import { LoginResponse, Auth, Profile, Order, UserOrders } from '../auth.models';
 import { map } from 'rxjs/operators';
 
 
@@ -50,6 +50,10 @@ export class AuthService {
 
   makeOrder(order: Order) {
     return this.http.post<Order>(`${environment.apiBaseUrl}/order`, order);
+  }
+
+  showUserOrders() {
+    return this.http.get<UserOrders>(`${environment.apiBaseUrl}/order/showOrders`);
   }
 
   logout() {

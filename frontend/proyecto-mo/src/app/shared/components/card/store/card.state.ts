@@ -9,7 +9,7 @@ import { GetPacksSuccess, GetPacksFailed, GetPacks } from './card.actions';
   name: 'cards',
   defaults: {
     packs: [],
-    produtos: []
+    products: []
   }
 })
 export class CardsState {

@@ -1,17 +1,20 @@
 <div class="card">
   <nz-card style="width:100%;" [nzCover]="coverTemplate">
-    <nz-card-meta [nzTitle]="card.nombre" [nzDescription]="card.descripcion"></nz-card-meta>
+    <nz-card-meta [nzTitle]="card.name" [nzDescription]="card.productDescription"></nz-card-meta>
     <label>Precio:
-      {{card.precio}}
+      {{card.price}}
     </label>
     <div>
       <!-- <button nz-button (click)="mercar()" nzType="primary" [nzSize]="size" nzShape="round"><i></i>Mercar</button> -->
       <button nz-button nzType="primary" [nzSize]="size" nzShape="round" (click)="getUserProfile()"
         routerLink="/purchase">Mercar</button>
-      <!---->
+      <!--
+          [routerLink]="['/purchase', card.productId, card.productDescription]">Mercar</button>
+        
+      -->
     </div>
   </nz-card>
   <ng-template #coverTemplate>
-    <img class="image" alt="example" [src]="card.imagen" />
+    <img class="image" alt="example" [src]="card.image" />
   </ng-template>
 </div>

@@ -1,4 +1,12 @@
-import { LoginRequest, LoginResponse, RegisterRequest, Profile, Auth, Order } from '../auth.models';
+import {
+  LoginRequest,
+  LoginResponse,
+  RegisterRequest,
+  Profile,
+  Auth,
+  Order,
+  UserOrders,
+} from '../auth.models';
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -82,6 +90,23 @@ export class MakeOrderFailed {
   static readonly type = '[Auth] MakeOrderFailed';
   constructor(public errors: Error[]) { }
 }
+
+export class ShowUserOrders {
+  static readonly type = '[Auth] ShowOrders';
+
+}
+
+export class ShowUserOrdersSuccess {
+  static readonly type = '[Auth] ShowOrdersSuccess';
+  constructor(public userOrders: UserOrders) {
+  }
+}
+export class ShowUserOrdersFailed {
+  static readonly type = '[Auth] ShowOrdersFailed';
+  constructor(public errors: Error[]) { }
+}
+
+
 
 export class Logout {
   static type = '[Auth] Logout';

@@ -4,6 +4,7 @@ import { Auth } from 'src/app/auth/auth.models';
 import { Observable } from 'rxjs';
 import { AuthState } from 'src/app/auth/store/auth.state';
 import { UpdateUrl } from 'src/app/auth/store/auth.actions';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mo-purchase',
@@ -14,14 +15,23 @@ export class PurchaseComponent implements OnInit {
   @Select(AuthState) user$: Observable<Auth>;
 
   currentUser;
-  constructor(private store: Store) { }
+  constructor(private store: Store, private route: ActivatedRoute) { }
 
+
+
+  productId;
+  productName;
   ngOnInit() {
     this.user$.subscribe(user => {
       if (user && user.accessToken) {
         this.currentUser = user
       }
     })
+    this.route.params.subscribe(params => {
+      this.productId = params.idProduct;
+      this.productName = params.productName;
+    })
+
   }
 
   openPopup() {

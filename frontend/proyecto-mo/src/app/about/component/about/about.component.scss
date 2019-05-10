@@ -2,13 +2,23 @@
 
 h1 {
   color: $main;
+  display: flex;
+  justify-content: center;
 }
-div {
+
+.box {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 500px;
 }
+
+.aboutContent {
+  max-width: 500px;
+}
 p {
+  display: flex;
+  justify-content: center;
   color: black;
 }

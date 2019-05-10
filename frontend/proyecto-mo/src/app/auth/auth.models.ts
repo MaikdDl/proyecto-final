@@ -14,6 +14,8 @@ export interface Auth {
   country: string;
   phoneNumber: string;
   birthday: number;
+  productName: string;
+  orderDate: number;
 }
 
 export interface LoginRequest {
@@ -50,6 +52,11 @@ export interface Profile {
 
 export interface Order {
   productId: number;
-  productDescription: string;
+  productName: string;
   productUnits: number;
+}
+
+export interface UserOrders {
+  productName: string;
+  orderDate: number;
 }

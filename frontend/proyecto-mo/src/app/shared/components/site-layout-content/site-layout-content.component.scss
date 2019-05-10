@@ -1,32 +1,11 @@
 @import '../../../../scss/colors.scss';
 .back {
-
-  /* Ubicación de la imagen */
-  
   background-image: url(../../../../../src/assets/Images/pulpo-fondo-bn.png);
-  
-  /* Para dejar la imagen de fondo centrada, vertical y
-  
-  horizontalmente */
-  
   background-position: center center;
-  
-  /* Para que la imagen de fondo no se repita */
-  
   background-repeat: repeat;
-  
-  /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
-  
-  background-attachment: fixed;
-  
-  /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
-  
-  background-size: cover;
-  
-  /* Se muestra un color de fondo mientras se está cargando la imagen
-  
-  de fondo o si hay problemas para cargarla */
-  
-  background-color: $white;
-  
+  background-attachment: fixed; /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+  background-size: cover; /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+  background-color: $white;  
+  display: flex;
+  justify-content: center;
   }
